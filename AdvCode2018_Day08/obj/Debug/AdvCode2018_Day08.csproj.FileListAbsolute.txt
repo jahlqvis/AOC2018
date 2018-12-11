@@ -1,8 +1,0 @@
-/Users/johan/Projects/jahlqvis/AdvCode2018_Day08.git/AdvCode2018_Day08/bin/Debug/Resources/input.txt
-/Users/johan/Projects/jahlqvis/AdvCode2018_Day08.git/AdvCode2018_Day08/bin/Debug/AdvCode2018_Day08.exe.config
-/Users/johan/Projects/jahlqvis/AdvCode2018_Day08.git/AdvCode2018_Day08/bin/Debug/AdvCode2018_Day08.exe
-/Users/johan/Projects/jahlqvis/AdvCode2018_Day08.git/AdvCode2018_Day08/bin/Debug/AdvCode2018_Day08.pdb
-/Users/johan/Projects/jahlqvis/AdvCode2018_Day08.git/AdvCode2018_Day08/obj/Debug/AdvCode2018_Day08.csprojAssemblyReference.cache
-/Users/johan/Projects/jahlqvis/AdvCode2018_Day08.git/AdvCode2018_Day08/obj/Debug/AdvCode2018_Day08.csproj.CoreCompileInputs.cache
-/Users/johan/Projects/jahlqvis/AdvCode2018_Day08.git/AdvCode2018_Day08/obj/Debug/AdvCode2018_Day08.exe
-/Users/johan/Projects/jahlqvis/AdvCode2018_Day08.git/AdvCode2018_Day08/obj/Debug/AdvCode2018_Day08.pdb

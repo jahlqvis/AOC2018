@@ -1,5 +1,0 @@
-/Users/johan/Projects/jahlqvis/AdvCode2018_Day09.git/AdvCode2018_Day09.git/bin/Debug/AdvCode2018_Day09.git.exe
-/Users/johan/Projects/jahlqvis/AdvCode2018_Day09.git/AdvCode2018_Day09.git/bin/Debug/AdvCode2018_Day09.git.pdb
-/Users/johan/Projects/jahlqvis/AdvCode2018_Day09.git/AdvCode2018_Day09.git/obj/x86/Debug/AdvCode2018_Day09.git.csproj.CoreCompileInputs.cache
-/Users/johan/Projects/jahlqvis/AdvCode2018_Day09.git/AdvCode2018_Day09.git/obj/x86/Debug/AdvCode2018_Day09.git.exe
-/Users/johan/Projects/jahlqvis/AdvCode2018_Day09.git/AdvCode2018_Day09.git/obj/x86/Debug/AdvCode2018_Day09.git.pdb
