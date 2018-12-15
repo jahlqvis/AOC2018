@@ -1,0 +1,39 @@
+
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Test_Day11", "testday11\Test_Day11.csproj", "{66BD86CC-BF04-4020-9D88-C1B5E7DB7528}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Program", "Day11\Program.csproj", "{2C7ED29A-B74C-4D4C-8239-BC3C8DB7FFCC}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|x86 = Debug|x86
+		Release|x86 = Release|x86
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{66BD86CC-BF04-4020-9D88-C1B5E7DB7528}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{66BD86CC-BF04-4020-9D88-C1B5E7DB7528}.Debug|x86.Build.0 = Debug|Any CPU
+		{66BD86CC-BF04-4020-9D88-C1B5E7DB7528}.Release|x86.ActiveCfg = Release|Any CPU
+		{66BD86CC-BF04-4020-9D88-C1B5E7DB7528}.Release|x86.Build.0 = Release|Any CPU
+		{2C7ED29A-B74C-4D4C-8239-BC3C8DB7FFCC}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{2C7ED29A-B74C-4D4C-8239-BC3C8DB7FFCC}.Debug|x86.Build.0 = Debug|Any CPU
+		{2C7ED29A-B74C-4D4C-8239-BC3C8DB7FFCC}.Release|x86.ActiveCfg = Release|Any CPU
+		{2C7ED29A-B74C-4D4C-8239-BC3C8DB7FFCC}.Release|x86.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(MonoDevelopProperties) = preSolution
+		Policies = $0
+		$0.DotNetNamingPolicy = $1
+		$1.DirectoryNamespaceAssociation = PrefixedHierarchical
+		$0.TextStylePolicy = $2
+		$2.inheritsSet = null
+		$2.scope = text/x-csharp
+		$0.CSharpFormattingPolicy = $3
+		$3.scope = text/x-csharp
+		$0.TextStylePolicy = $4
+		$4.FileWidth = 80
+		$4.TabsToSpaces = True
+		$4.scope = text/plain
+		$0.StandardHeader = $5
+		$0.VersionControlPolicy = $6
+	EndGlobalSection
+EndGlobal
