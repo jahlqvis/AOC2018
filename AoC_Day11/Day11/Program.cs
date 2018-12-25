@@ -1,5 +1,5 @@
 ﻿using System;
-using System.Diagnostics;
+using System.Collections.Generic;
 
 namespace Program
 {
@@ -8,66 +8,97 @@ namespace Program
         private int serialnumber;
         const int gridsize = 300;
         public FuelCell[,] Cells;
-        public FuelCellSquare Square;
-        public long elapsed_ms;
+        public int[,] Squares;
+        public List<Tuple<int, long>> ElapsedTime;
+        public Dictionary<int, int[,]> SquaresList;
 
 
-
-        public int SearchHighestPowerSquare(out int x_found, out int y_found, ref int size)
+        public int SearchHighestPower(out int x_found, out int y_found, out int size)
         {
-            int squaresizeMax = 300;
-            int squaresizeMin = 1;
 
             x_found = -1;
             y_found = -1;
-
+            size = -1;
             int max = -1;
-
-            if (size == 3) {
-                squaresizeMax = 3;
-                squaresizeMin = 3;
-            }
-            var sw = new Stopwatch();
-
-            Square = new FuelCellSquare();
 
             try
             {
-                for (int s=squaresizeMin;s<=squaresizeMax;s++)
+
+                for (int s = 1; s <= 300; s++)
                 {
-                    sw.Start();
+                    double r = 300 - s + 1;
 
-                    int squaresx = gridsize - s + 1;
-                    int squaresy = squaresx;
+                    double squaresy = Math.Ceiling(r);
+                    double squaresx = squaresy;
 
-                   
+                    Squares = new int[(int)squaresx, (int)squaresy];
+
                     for (int y = 0; y < squaresy; y++)
                     {
                         for (int x = 0; x < squaresx; x++)
                         {
-                            Square.total = 0;
+                            int total = 0;
 
-                            for (int x1 = 0; x1 < s; x1++)
-                                for (int y1 = 0; y1 < s; y1++)
-                                    Square.total += Cells[x + x1, y + y1].powerlevel;
-
-
-                            if (Square.total > max)
+                            if(s==1)
                             {
-                                max = Square.total;
+                                total = Cells[x, y].powerlevel;
+                                Squares[x, y] = total;
+
+
+                            }
+                            else if (s%2==0) // even
+                            {
+                                int s1 = s / 2;
+
+                                int[,] temp;
+                                SquaresList.TryGetValue(s1, out temp);
+
+                                total += temp[x, y];
+                                total += temp[x + s1, y];
+                                total += temp[x + s1, y + s1];
+                                total += temp[x, y + s1];
+
+                                Squares[x, y] = total;
+                            } 
+                            else if(s>1 && s%2!=0) // odd
+                            {
+                                int s1 = (s - 1)/2;
+                                int s2 = (s + 1)/2;
+                                int s0 = 1;
+
+                                int[,] temp1;
+                                int[,] temp2;
+                                int[,] temp0;
+                                 
+                                SquaresList.TryGetValue(s1, out temp1);
+                                SquaresList.TryGetValue(s2, out temp2);
+                                SquaresList.TryGetValue(s0, out temp0);
+
+                                total += temp2[x, y];
+                                total += temp1[x + s2, y];
+                                total += temp1[x, y + s2];
+                                total += temp2[x + s1, y + s1];
+
+                                int m = (s - 1) / 2;
+
+                                total -= temp0[x + m, y + m];
+
+                                Squares[x, y] = total;
+                            }
+
+
+                            if (total > max)
+                            {
+                                max = total;
                                 x_found = x + 1;
                                 y_found = y + 1;
                                 size = s;
-
                             }
                         }
                     }
 
-                    sw.Stop();
-                    elapsed_ms = sw.ElapsedMilliseconds;
+                    SquaresList.Add(s, Squares);
                 }
-
-
             }
             catch (IndexOutOfRangeException e)
             {
@@ -87,8 +118,6 @@ namespace Program
             for (int y = 1; y <= 300; y++)
                 for (int x = 1; x <= 300; x++)
                 {
-
-
                     Cells[x - 1, y - 1] = new FuelCell();
 
                     Cells[x - 1, y - 1].x = x;
@@ -115,7 +144,9 @@ namespace Program
                     Cells[x - 1, y - 1].powerlevel = hundreds - 5;
                 }
 
-        }
+            SquaresList = new Dictionary<int, int[,]>();
+
+    }
 
         public class FuelCell
         {
@@ -126,11 +157,6 @@ namespace Program
             public int serial;
         }
 
-        public class FuelCellSquare
-        {
-            public int total;
-
-        }
 
     }
 
@@ -142,11 +168,11 @@ namespace Program
             int sn = 6548;
             int x;
             int y;
-            int s = 3;
+            int s;
             Grid grid = new Grid(sn);
-            power = grid.SearchHighestPowerSquare(out x, out y, ref s);
+            power = grid.SearchHighestPower(out x, out y, out s);
 
-            Console.WriteLine("Hello, the serial number is {0} and grid size 300x300. Highest powerlevel {1} found at grid coordinates {2}, {3}.", sn, power, x, y);
+            Console.WriteLine("Hello, the serial number is {0} and grid size 300x300. Highest powerlevel {1} found at grid coordinates {2}, {3} and square size {4}.", sn, power, x, y, s);
             Console.WriteLine("");
             Console.ReadLine();
 
