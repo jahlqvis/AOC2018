@@ -78,6 +78,38 @@ namespace Day03
             return n;
         }
 
+        public int Nooverlap()
+        {
+            int n;
+            int m=0;
+            int o=0;
+
+            foreach (Slice t in Slices)
+            {
+                n = 0;
+                foreach (Slice s in Slices)
+                {
+                    if ((s.id != t.id) && ((s.tl_x >= t.tl_x && s.tl_x <= t.br_x && s.tl_y >= t.tl_y && s.tl_y <= t.br_y) ||
+                        (s.br_x >= t.tl_x && s.br_x <= t.br_x && s.br_y >= t.tl_y && s.br_y <= t.br_y)))
+                        n++;
+
+                }
+                if (n == 0)
+                {
+                    m = t.id;
+                    o++;
+                }
+
+
+            }
+
+            if (o == 1)
+                return m;
+            else
+                return -1;           
+        }
+
+
         private bool Fabricsize()
         {
             int x=0;
@@ -145,9 +177,10 @@ namespace Day03
             SliceKeeper s = new SliceKeeper();
             long n = 0;
             if (s.Readfromfile("input.txt"))
-                n = s.Overlap();
-            Console.WriteLine("The fabric's size is {0} x {1}, and {2} square inches are within two or more overlapping slices.", s.fabric_width, s.fabric_height, n);
-
+                //n = s.Overlap();
+            //Console.WriteLine("The fabric's size is {0} x {1}, and {2} square inches are within two or more overlapping slices.", s.fabric_width, s.fabric_height, n);
+            n = s.Nooverlap();
+            Console.WriteLine("The slice with id {0}, has no overlap.", n);
         }
     }
 }
