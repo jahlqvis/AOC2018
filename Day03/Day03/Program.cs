@@ -89,8 +89,17 @@ namespace Day03
                 n = 0;
                 foreach (Slice s in Slices)
                 {
-                    if ((s.id != t.id) && ((s.tl_x >= t.tl_x && s.tl_x <= t.br_x && s.tl_y >= t.tl_y && s.tl_y <= t.br_y) ||
-                        (s.br_x >= t.tl_x && s.br_x <= t.br_x && s.br_y >= t.tl_y && s.br_y <= t.br_y)))
+                    if ((s.id != t.id) && // should not be same slice
+                        ((t.tl_x >= s.tl_x && t.tl_x <= s.br_x && t.tl_y >= s.tl_y && t.tl_y <= s.br_y) ||  // check if topleft coordinates of slice t is inside any other slice 
+                        (t.br_x >= s.tl_x && t.br_x <= s.br_x && t.br_y >= s.tl_y && t.br_y <= s.br_y) ||   // check if bottomright coordinatse of slice t is inside any other slice
+                        (t.tl_x >= s.tl_x && t.tl_x <= s.br_x && t.br_y >= s.tl_y && t.br_y <= s.br_y) ||   // check if bottomleft coordinates of slice t is inside any other slice
+                        (t.br_x >= s.tl_x && t.br_x <= s.br_x && t.tl_y >= s.tl_y && t.tl_y <= s.br_y) ||   // check if topright coordinates of slice t is inside any other slice
+                        (s.tl_x >= t.tl_x && s.tl_x <= t.br_x && s.tl_y >= t.tl_y && s.tl_y <= t.br_y) ||   // check once if any other slices tl is totally inside t slice
+                        (s.br_x >= t.tl_x && s.br_x <= t.br_x && s.br_y >= t.tl_y && s.br_y <= t.br_y) ||   // check once if any other slices br is totally inside t slice
+                        (s.tl_x >= t.tl_x && s.tl_x <= t.br_x && s.br_y >= t.tl_y && s.br_y <= t.br_y) ||   // check once if any other slices bl is totally inside t slice
+                        (s.br_x >= t.tl_x && s.br_x <= t.br_x && s.tl_y >= t.tl_y && s.tl_y <= t.br_y) ||   // check once if any other slices tr is totally inside t slice
+                        (s.tl_x >= t.tl_x && s.tl_x <= t.br_x && t.tl_y >= s.tl_y && t.tl_y <= s.br_y) ||   // check if crossed s over t
+                        (t.tl_x >= s.tl_x && t.tl_x <= s.br_x && s.tl_y >= t.tl_y && s.tl_y <= t.br_y)))    // check if crossed t over s
                         n++;
 
                 }
